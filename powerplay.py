@@ -45,15 +45,15 @@ class Archiver(object):
         return ret
 
     def download(self, playlists):
-        ydl_opts = {
-            'ignoreerrors': True,
-            'download_archive': 'archive.txt',
-            'outtmpl': '%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s'
-        }
-        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-            ydl.download(['https://www.youtube.com/playlist?list={}'
-                          .format(playlist["id"])
-                          for playlist in playlists])
+        for playlist in playlists:
+            ydl_opts = {
+                'ignoreerrors': True,
+                'download_archive': '{} archive.txt'.format(playlist["title"]),
+                'outtmpl': '%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s'
+            }
+            with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+                ydl.download(['https://www.youtube.com/playlist?list={}'
+                              .format(playlist["id"])])
 
     def go(self):
         self.download(self.playlists())
