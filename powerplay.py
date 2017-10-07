@@ -1,7 +1,11 @@
+from __future__ import unicode_literals
+
 from apiclient.discovery import build
 import httplib2
+import youtube_dl
 
 import os
+import sys
 
 
 class Archiver(object):
@@ -40,13 +44,21 @@ class Archiver(object):
         ret.append({"id": liked_videos_id, "title": "Liked videos"})
         return ret
 
-    def download(playlist)
+    def download(self, playlists):
+        ydl_opts = {
+            'ignoreerrors': True,
+            'download_archive': 'archive.txt',
+            'outtmpl': '%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s'
+        }
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            ydl.download(['https://www.youtube.com/playlist?list={}'
+                          .format(playlist["id"])
+                          for playlist in playlists])
 
-
+    def go(self):
+        self.download(self.playlists())
 
 
 if __name__ == "__main__":
-    porterjamesj = "UCoDRCiVwKsjhqT2nXHmE3zg"
-    a = Archiver(porterjamesj)
-    import pprint
-    pprint.pprint(a.gather())
+    user_id = sys.argv[1]
+    Archiver(user_id).go()
