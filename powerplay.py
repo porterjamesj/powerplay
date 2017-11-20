@@ -49,7 +49,7 @@ class Archiver(object):
             ydl_opts = {
                 'ignoreerrors': True,
                 'download_archive': '{} archive.txt'.format(playlist["title"]),
-                'outtmpl': '%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s'
+                'outtmpl': '%(playlist)s/%(title)s-%(id)s.%(ext)s'
             }
             with youtube_dl.YoutubeDL(ydl_opts) as ydl:
                 ydl.download(['https://www.youtube.com/playlist?list={}'
