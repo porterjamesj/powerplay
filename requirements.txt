@@ -22,4 +22,4 @@ six==1.10.0
 traitlets==4.3.2
 uritemplate==3.0.0
 wcwidth==0.1.7
-youtube-dl==2018.10.5
+youtube-dl==2019.01.24
