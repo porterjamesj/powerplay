@@ -15,7 +15,7 @@ ptyprocess==0.5.2
 pyasn1==0.3.3
 pyasn1-modules==0.1.1
 Pygments==2.2.0
-rsa==3.4.2
+rsa==4.1
 scandir==1.5
 simplegeneric==0.8.1
 six==1.10.0
