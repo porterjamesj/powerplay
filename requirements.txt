@@ -4,7 +4,7 @@ decorator==4.1.2
 enum34==1.1.6
 google-api-python-client==1.6.3
 httplib2==0.10.3
-ipython==5.4.1
+ipython==7.16.3
 ipython-genutils==0.2.0
 oauth2client==4.1.2
 pathlib2==2.3.0
